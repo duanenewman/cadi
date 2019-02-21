@@ -1,3 +1,3 @@
-[submodule "www-source/themes/landing-page-hugo"]
-	path = www-source/themes/landing-page-hugo
+[submodule "docs-source/themes/landing-page-hugo"]
+	path = docs-source/themes/landing-page-hugo
 	url = https://github.com/crakjie/landing-page-hugo.git
