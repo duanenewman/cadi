@@ -3,27 +3,28 @@ languageCode = "en-us"
 title = "Project CADI"
 
 theme = "landing-page-hugo"
+# https://themes.gohugo.io/landing-page-hugo/
 
 [params]
     description = "Computer Aided Dashboard Instrumentation"
-    author_url = "http://duanenewman.net"
-    author_name = "Duane"
-    project_url = "http://github.com/duanenewman/cadi"
-    project_documentation = "http://projectcadi.com/"
 
-    github_project_name = "cadi"
-    github_user_name = "duanenewman"
-
-    first_color="#f8f8f8"
-    first_border_color="#e7e7e7"
-    first_text_color="#333"
-
-    second_color="white"
-    second_text_color="#333"
-
-    header_color="#f8f8f8"
-    header_text_color="rgb(51, 51, 51)"
-
-    header_link_color="#777"
-    header_link_hover_color="rgb(51, 51, 51)"
-
+# [[params.social]]
+# 	title = "email"
+# 	icon = "envelope-o"
+# 	url = "mailto:"
+# [[params.social]]
+# 	title = "twitter"
+# 	icon = "twitter"
+# 	url = "https://twitter.com/duanenewman"
+[[params.social]]
+	title = "github"
+	icon = "github"
+	url = "https://github.com/duanenewman/cadi"
+# [[params.social]]
+# 	title = "linkedin"
+# 	icon = "linkedin"
+# 	url = "http://linkedin.com/in/duanenewman"
+[[params.social]]
+	title = "duane"
+	icon = "user"
+	url = "http://duanenewman.net"
