@@ -6,17 +6,63 @@
     <description>Recent content in Services on Project CADI</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Fri, 01 Feb 2019 00:06:00 +0000</lastBuildDate>
     
 	<atom:link href="http://projectcadi.com/services/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title></title>
-      <link>http://projectcadi.com/services/services/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Hands Free Calling</title>
+      <link>http://projectcadi.com/services/handsfree/</link>
+      <pubDate>Fri, 01 Feb 2019 00:06:00 +0000</pubDate>
       
-      <guid>http://projectcadi.com/services/services/</guid>
-      <description></description>
+      <guid>http://projectcadi.com/services/handsfree/</guid>
+      <description>I&amp;rsquo;m hoping to be able to activate the hands-free protocols on Bluetooth to allow conversations through the car speakers.</description>
+    </item>
+    
+    <item>
+      <title>Music Playback</title>
+      <link>http://projectcadi.com/services/music/</link>
+      <pubDate>Fri, 01 Feb 2019 00:05:00 +0000</pubDate>
+      
+      <guid>http://projectcadi.com/services/music/</guid>
+      <description>I don&amp;rsquo;t just want to play music, I plan to show song info and allow playback control over Bluetooth with audio through the car speakers.</description>
+    </item>
+    
+    <item>
+      <title>Environmental Control</title>
+      <link>http://projectcadi.com/services/environmental/</link>
+      <pubDate>Fri, 01 Feb 2019 00:04:00 +0000</pubDate>
+      
+      <guid>http://projectcadi.com/services/environmental/</guid>
+      <description>Automated A/C Control based on outside (and inside) temperatures, with support for headed seats</description>
+    </item>
+    
+    <item>
+      <title>Radio</title>
+      <link>http://projectcadi.com/services/radio/</link>
+      <pubDate>Fri, 01 Feb 2019 00:03:00 +0000</pubDate>
+      
+      <guid>http://projectcadi.com/services/radio/</guid>
+      <description>Support for radio tuning with tuner</description>
+    </item>
+    
+    <item>
+      <title>CAN bus</title>
+      <link>http://projectcadi.com/services/canbus/</link>
+      <pubDate>Fri, 01 Feb 2019 00:02:00 +0000</pubDate>
+      
+      <guid>http://projectcadi.com/services/canbus/</guid>
+      <description>CAN bus integration to support virtual engine gauges and other diagnostics and integrations</description>
+    </item>
+    
+    <item>
+      <title>Remote Start</title>
+      <link>http://projectcadi.com/services/remotestart/</link>
+      <pubDate>Fri, 01 Feb 2019 00:01:00 +0000</pubDate>
+      
+      <guid>http://projectcadi.com/services/remotestart/</guid>
+      <description>App or Secure key-fob based remote start functions would be awesome</description>
     </item>
     
   </channel>
