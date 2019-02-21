@@ -15,6 +15,6 @@ if($Action -eq "Debug") {
 } else {
 	echo "deploying"
 	# rm -ErrorAction SilentlyContinue -r -force ../duanenewman.github.io/*
-	hugo -v -d www/
-	cp file.cname ../duanenewman.github.io/CNAME
+	hugo -v -d ../www/
+	cp file.cname ../www/CNAME
 }
