@@ -17,8 +17,6 @@ namespace Cadi.UI.ViewModels
 
         private void GoBackCommandExecute()
         {
-            NavigationService.NavigateAsync("MainPage");
-            //NavigationService.GoBackAsync();
-        }
+            NavigationService.NavigateAsync("MainPage");        }
     }
 }

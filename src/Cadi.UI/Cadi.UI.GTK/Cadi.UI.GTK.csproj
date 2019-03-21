@@ -96,7 +96,12 @@
     </PackageReference>
     <Reference Include="Prism">
       <HintPath>$(PkgPrism_Core)\lib\netstandard2.0\Prism.dll</HintPath>
-	</Reference>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\*.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

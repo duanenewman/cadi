@@ -6,6 +6,12 @@
 	<Application.Resources>
 
 		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Style TargetType="Button" x:Key="LargeButtonStyle">
+                <Setter Property="MinimumWidthRequest" Value="100" />
+                <Setter Property="MinimumHeightRequest" Value="100" />
+            </Style>
+        </ResourceDictionary>
 
-	</Application.Resources>
+    </Application.Resources>
 </prism:PrismApplication>

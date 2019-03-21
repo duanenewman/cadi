@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Cadi.UI.Views.MainPage"
              Title="{Binding Title}">
-
+    <ContentPage.Resources>
+    </ContentPage.Resources>
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -29,11 +30,18 @@
                HorizontalTextAlignment="End" VerticalTextAlignment="Start" 
                Text="{Binding ClockTime}" />
 
-        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
-                     Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-            <Button Text="Radio" Command="{Binding RadioCommand}" />
-            <Button Text="A/C" Command="{Binding AirConditionerCommand}"/>
-        </StackLayout>
+
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+              VerticalOptions="Fill" HorizontalOptions="Fill" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Style="{StaticResource LargeButtonStyle}" Text="Radio" Command="{Binding RadioCommand}" />
+            <Button Grid.Column="2" Style="{StaticResource LargeButtonStyle}" Text="A/C" Command="{Binding AirConditionerCommand}"/>
+        </Grid>
 
     </Grid>
 
