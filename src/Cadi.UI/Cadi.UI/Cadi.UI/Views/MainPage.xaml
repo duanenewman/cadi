@@ -4,8 +4,37 @@
              x:Class="Cadi.UI.Views.MainPage"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
-    </StackLayout>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="1"
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Start" 
+               Text="C.A.D.I." />
+
+        <Label Grid.Row="0" Grid.Column="0"
+               HorizontalTextAlignment="Start" VerticalTextAlignment="Start" 
+               Text="{Binding ClockDate}" />
+
+        <Label Grid.Row="0" Grid.Column="2"
+               HorizontalTextAlignment="End" VerticalTextAlignment="Start" 
+               Text="{Binding ClockTime}" />
+
+        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                     Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button Text="Radio" Command="{Binding RadioCommand}" />
+            <Button Text="A/C" Command="{Binding AirConditionerCommand}"/>
+        </StackLayout>
+
+    </Grid>
 
 </ContentPage>
