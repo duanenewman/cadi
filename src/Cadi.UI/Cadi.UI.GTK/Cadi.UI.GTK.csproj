@@ -70,8 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GPIOPinDriver.cs" />
+    <Compile Include="GtkInitializer.cs" />
+    <Compile Include="PinAlreadyExportedException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RaspberryPiGpioService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cadi.UI\Cadi.UI\Cadi.UI.csproj">

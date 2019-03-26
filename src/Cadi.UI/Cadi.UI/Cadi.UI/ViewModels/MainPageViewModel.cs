@@ -1,4 +1,5 @@
 ﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -30,14 +31,13 @@ namespace Cadi.UI.ViewModels
         public ICommand AirConditionerCommand { get; }
         public ICommand ExitCommand { get; }
 
-        public MainPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public MainPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator)
+            : base(navigationService, eventAggregator)
         {
             Title = "Main Page";
             RadioCommand = new DelegateCommand(NavigateToRadioPage);
             AirConditionerCommand = new DelegateCommand(NavigateToAirConditionerPage);
             ExitCommand = new DelegateCommand(ExitCommandExecute);
-
         }
 
         private void NavigateToAirConditionerPage()
@@ -52,7 +52,7 @@ namespace Cadi.UI.ViewModels
 
         private void ExitCommandExecute()
         {
-            Xamarin.Forms.MessagingCenter.Send(this, "exit");
+            EventAggregator.GetEvent<ExitEvent>().Publish();
         }
 
         private bool OnPage;

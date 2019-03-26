@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Navigation;
 
 namespace Cadi.UI.ViewModels
@@ -26,7 +27,7 @@ namespace Cadi.UI.ViewModels
 
         public ICommand GoBackCommand { get; }
         public ICommand PresetCommand { get; }
-        public RadioPageViewModel(INavigationService navigationService) : base(navigationService)
+        public RadioPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator) : base(navigationService, eventAggregator)
         {
             GoBackCommand = new DelegateCommand(GoBackCommandExecute);
             PresetCommand = new DelegateCommand<string>(PresetCommandExecute);

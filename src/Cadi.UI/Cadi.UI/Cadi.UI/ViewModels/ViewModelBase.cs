@@ -1,4 +1,5 @@
 ﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -10,6 +11,7 @@ namespace Cadi.UI.ViewModels
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {
         protected INavigationService NavigationService { get; private set; }
+        protected IEventAggregator EventAggregator { get; }
 
         private string _title;
         public string Title
@@ -18,9 +20,10 @@ namespace Cadi.UI.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        public ViewModelBase(INavigationService navigationService)
+        public ViewModelBase(INavigationService navigationService, IEventAggregator eventAggregator)
         {
             NavigationService = navigationService;
+            EventAggregator = eventAggregator;
         }
 
         public virtual void OnNavigatedFrom(INavigationParameters parameters)
