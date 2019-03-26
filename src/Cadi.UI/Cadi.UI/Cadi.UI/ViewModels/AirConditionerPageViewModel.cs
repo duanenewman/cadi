@@ -10,7 +10,6 @@ namespace Cadi.UI.ViewModels
 {
     public class AirConditionerPageViewModel : ViewModelBase
     {
-        //public GPIOPinDriver GPIO { get; set;  }
         public ICommand GoBackCommand { get; }
         public ICommand ToggleACCommand { get; }
         public IGpioService GpioService { get; }
@@ -28,9 +27,6 @@ namespace Cadi.UI.ViewModels
             GoBackCommand = new DelegateCommand(GoBackCommandExecute);
             ToggleACCommand = new DelegateCommand(ToggleACCommandExecute);
             this.GpioService = GpioService;
-
-            GpioService.ExportPin(Pin.GPIO18, GPIODirection.Out, GPIOState.Low);
-            GpioService.ExportPin(Pin.GPIO17, GPIODirection.In, GPIOState.Low);
         }
 
         private bool WasPin17Closed = false;
@@ -48,37 +44,34 @@ namespace Cadi.UI.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            //GPIO = new GPIOPinDriver(GPIOPinDriver.Pin.GPIO18, GPIOPinDriver.GPIODirection.Out, GPIOPinDriver.GPIOState.Low);
-            WatchingPin = true;
-            Task.Run(async () =>
-            {
-                while (WatchingPin)
-                {
-                    var isPin17Closed = GpioService.GetPinState(Pin.GPIO17) == GPIOState.High;
+            //WatchingPin = true;
+            //Task.Run(async () =>
+            //{
+            //    while (WatchingPin)
+            //    {
+            //        var isPin17Closed = GpioService.GetPinState(Pin.GPIO17) == GPIOState.High;
 
-                    var changed = (!WasPin17Closed && isPin17Closed) || (WasPin17Closed && !isPin17Closed);
-                    if (changed)
-                    {
-                        if (isPin17Closed)
-                        {
-                            var currentState = GpioService.GetPinState(Pin.GPIO18);
+            //        var changed = (!WasPin17Closed && isPin17Closed) || (WasPin17Closed && !isPin17Closed);
+            //        if (changed)
+            //        {
+            //            if (isPin17Closed)
+            //            {
+            //                var currentState = GpioService.GetPinState(Pin.GPIO18);
 
-                            GpioService.SetPinState(Pin.GPIO18,
-                                currentState == GPIOState.Low ? GPIOState.High : GPIOState.Low);
-                        }
+            //                GpioService.SetPinState(Pin.GPIO18,
+            //                    currentState == GPIOState.Low ? GPIOState.High : GPIOState.Low);
+            //            }
 
-                        WasPin17Closed = isPin17Closed;
-                    }
+            //            WasPin17Closed = isPin17Closed;
+            //        }
 
-                    await Task.Delay(100);
-                }
-            });
+            //        await Task.Delay(100);
+            //    }
+            //});
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
-            //GPIO.Dispose();
-            //GPIO = null;
             WatchingPin = false;
         }
 

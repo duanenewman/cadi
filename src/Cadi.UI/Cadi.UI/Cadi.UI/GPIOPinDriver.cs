@@ -46,7 +46,7 @@ namespace Cadi.UI
     };
 
 
-    public interface IGpioService
+    public interface IGpioService : IDisposable
     {
         void ExportPin(Pin pin, GPIODirection direction, GPIOState initialValue);
         void UnexportPin(Pin pin);
