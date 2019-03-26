@@ -15,6 +15,7 @@ namespace Cadi.UI.ViewModels
         public ICarSubSystem CarSubSystem { get; }
 
         private string _acState;
+        private SubscriptionToken eventSubKey;
 
         public string ACState
         {
@@ -26,6 +27,12 @@ namespace Cadi.UI.ViewModels
         {
             ToggleACCommand = new DelegateCommand(ToggleACCommandExecute);
             CarSubSystem = carSubSystem;
+            SetAcState(CarSubSystem.IsAcOn);
+        }
+
+        private void SetAcState(bool isOn)
+        {
+            ACState = isOn ? "On" : "Off";
         }
 
         private void ToggleACCommandExecute()
@@ -37,10 +44,12 @@ namespace Cadi.UI.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
+            eventSubKey = EventAggregator.GetEvent<AcStateChangedEvent>().Subscribe(isOn => SetAcState(isOn));
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            EventAggregator.GetEvent<AcStateChangedEvent>().Unsubscribe(eventSubKey);
         }
 
     }

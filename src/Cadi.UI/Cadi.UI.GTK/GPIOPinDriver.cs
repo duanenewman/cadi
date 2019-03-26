@@ -27,8 +27,16 @@ namespace Cadi.UI.GTK
                     else if (_exported_pins.IndexOf(value) != -1)
                         throw new PinAlreadyExportedException("Requested pin is already exported.");
                     else
-                    {                                                                                     //  0  1  2  3  4  5
-                        File.WriteAllText(GPIO_ROOT_DIR + "export", value.ToString().Substring(4));       //  G  P  I  O  8
+                    {
+                        try
+                        {
+                            File.WriteAllText(GPIO_ROOT_DIR + "export", value.ToString().Substring(4));       //  G  P  I  O  8
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+
                         _exported_pins.Add(value);
                         _gpioPin = value;
                     }

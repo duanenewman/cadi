@@ -1,24 +1,33 @@
 ﻿using Xamarin.Forms.Xaml;
 using System;
 using System.Threading.Tasks;
+using Prism.Events;
 
 namespace Cadi.UI
 {
+
+    public class AcStateChangedEvent : PubSubEvent<bool> { }
+
     public class CarSubSystem : ICarSubSystem
     {
         public bool IsAcOn {
             get => GpioService.GetPinState(Pin.GPIO18) == GPIOState.High;
-            set => GpioService.SetPinState(Pin.GPIO18, value ? GPIOState.High : GPIOState.Low);
+            set {
+                var nextState = value ? GPIOState.High : GPIOState.Low;
+                GpioService.SetPinState(Pin.GPIO18, nextState);
+                EventAggregator.GetEvent<AcStateChangedEvent>().Publish(nextState == GPIOState.High);
+            }
         }
 
         public IGpioService GpioService { get; }
-
+        public IEventAggregator EventAggregator { get; }
         private bool IsRunning { get; set; }
         private bool WasPin17Closed { get; set; }
 
-        public CarSubSystem(IGpioService gpioService)
+        public CarSubSystem(IGpioService gpioService, IEventAggregator eventAggregator)
         {
             GpioService = gpioService;
+            EventAggregator = eventAggregator;
         }
 
         public void Start()
@@ -39,9 +48,12 @@ namespace Cadi.UI
                         if (isPin17Closed)
                         {
                             var currentState = GpioService.GetPinState(Pin.GPIO18);
+                            var nextState = currentState == GPIOState.Low ? GPIOState.High : GPIOState.Low;
 
                             GpioService.SetPinState(Pin.GPIO18,
-                                currentState == GPIOState.Low ? GPIOState.High : GPIOState.Low);
+                                nextState);
+
+                            EventAggregator.GetEvent<AcStateChangedEvent>().Publish(nextState == GPIOState.High);
                         }
 
                         WasPin17Closed = isPin17Closed;

@@ -10,6 +10,4 @@ namespace Cadi.UI
         GPIOState GetPinState(Pin pin);
         void SetPinState(Pin pin, GPIOState state);
     }
-
-
 }

@@ -1,5 +1,4 @@
-﻿using Prism.Events;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace Cadi.UI
@@ -28,6 +27,4 @@ namespace Cadi.UI
         GPIO25,
         GPIO27
     };
-
-    public class ExitEvent : PubSubEvent { }
 }
