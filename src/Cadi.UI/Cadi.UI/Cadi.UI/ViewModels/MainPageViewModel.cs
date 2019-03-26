@@ -27,32 +27,10 @@ namespace Cadi.UI.ViewModels
             set => SetProperty(ref _clockDate, value);
         }
 
-        public ICommand RadioCommand { get; }
-        public ICommand AirConditionerCommand { get; }
-        public ICommand ExitCommand { get; }
-
         public MainPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator)
             : base(navigationService, eventAggregator)
         {
             Title = "Main Page";
-            RadioCommand = new DelegateCommand(NavigateToRadioPage);
-            AirConditionerCommand = new DelegateCommand(NavigateToAirConditionerPage);
-            ExitCommand = new DelegateCommand(ExitCommandExecute);
-        }
-
-        private void NavigateToAirConditionerPage()
-        {
-            NavigationService.NavigateAsync("AirConditionerPage");
-        }
-
-        private void NavigateToRadioPage()
-        {
-            NavigationService.NavigateAsync("RadioPage");
-        }
-
-        private void ExitCommandExecute()
-        {
-            EventAggregator.GetEvent<ExitEvent>().Publish();
         }
 
         private bool OnPage;

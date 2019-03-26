@@ -24,12 +24,17 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="1" Style="{StaticResource LargeButtonStyle}" 
-                Text="Home" Command="{Binding GoBackCommand}"/>
-        
+                Text="Home" Command="{Binding NavigateToHomeCommand}"/>
+            
+            <Button Grid.Column="2" Style="{StaticResource LargeButtonStyle}" Text="Radio" Command="{Binding RadioCommand}" />
+            <Button Grid.Column="3" Style="{StaticResource LargeButtonStyle}" Text="Exit" Command="{Binding ExitCommand}"/>
+
         </Grid>
     </Grid>
 

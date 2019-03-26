@@ -11,7 +11,6 @@ namespace Cadi.UI.ViewModels
 {
     public class AirConditionerPageViewModel : ViewModelBase
     {
-        public ICommand GoBackCommand { get; }
         public ICommand ToggleACCommand { get; }
         public ICarSubSystem CarSubSystem { get; }
 
@@ -25,7 +24,6 @@ namespace Cadi.UI.ViewModels
 
         public AirConditionerPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator , ICarSubSystem carSubSystem) : base(navigationService, eventAggregator)
         {
-            GoBackCommand = new DelegateCommand(GoBackCommandExecute);
             ToggleACCommand = new DelegateCommand(ToggleACCommandExecute);
             CarSubSystem = carSubSystem;
         }
@@ -45,10 +43,6 @@ namespace Cadi.UI.ViewModels
         {
         }
 
-        private void GoBackCommandExecute()
-        {
-            NavigationService.NavigateAsync("MainPage");
-        }
     }
 
 
