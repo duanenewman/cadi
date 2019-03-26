@@ -2,27 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Cadi.UI.Views.AirConditionerPage"
-             Title="{Binding Title}">
-    <Grid>
+             Title="{Binding Title}" BackgroundColor="Black">
+    <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="2" 
+        <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Button Text="Toggle A/C" Padding="20" Command="{Binding ToggleACCommand}" />
+        </StackLayout>
+
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" 
               VerticalOptions="Fill" HorizontalOptions="Fill" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="2" HorizontalOptions="CenterAndExpand" Style="{StaticResource LargeButtonStyle}" 
+            <Button Grid.Column="1" Style="{StaticResource LargeButtonStyle}" 
                 Text="Home" Command="{Binding GoBackCommand}"/>
         
         </Grid>

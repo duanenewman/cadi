@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Cadi.UI.Views.MainPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}" BackgroundColor="Black">
     <ContentPage.Resources>
     </ContentPage.Resources>
     <Grid Margin="5">
@@ -30,17 +30,23 @@
                HorizontalTextAlignment="End" VerticalTextAlignment="Start" 
                Text="{Binding ClockTime}" />
 
-
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <Label Text="70" FontSize="70" />
+            <Label Text="MPH" FontSize="Small" VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+        
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
               VerticalOptions="Fill" HorizontalOptions="Fill" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1" Style="{StaticResource LargeButtonStyle}" Text="Radio" Command="{Binding RadioCommand}" />
             <Button Grid.Column="2" Style="{StaticResource LargeButtonStyle}" Text="A/C" Command="{Binding AirConditionerCommand}"/>
+            <Button Grid.Column="3" Style="{StaticResource LargeButtonStyle}" Text="Exit" Command="{Binding ExitCommand}"/>
         </Grid>
 
     </Grid>

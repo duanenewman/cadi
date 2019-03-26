@@ -11,6 +11,9 @@
                 <Setter Property="MinimumWidthRequest" Value="100" />
                 <Setter Property="MinimumHeightRequest" Value="100" />
             </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
         </ResourceDictionary>
 
     </Application.Resources>

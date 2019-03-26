@@ -28,6 +28,7 @@ namespace Cadi.UI.ViewModels
 
         public ICommand RadioCommand { get; }
         public ICommand AirConditionerCommand { get; }
+        public ICommand ExitCommand { get; }
 
         public MainPageViewModel(INavigationService navigationService)
             : base(navigationService)
@@ -35,15 +36,8 @@ namespace Cadi.UI.ViewModels
             Title = "Main Page";
             RadioCommand = new DelegateCommand(NavigateToRadioPage);
             AirConditionerCommand = new DelegateCommand(NavigateToAirConditionerPage);
-            Task.Run(async () => 
-            {
-                while (true)
-                {
-                    ClockDate = DateTime.Now.ToShortDateString();
-                    ClockTime = DateTime.Now.ToShortTimeString();
-                    await Task.Delay(1000);
-                }
-            });
+            ExitCommand = new DelegateCommand(ExitCommandExecute);
+
         }
 
         private void NavigateToAirConditionerPage()
@@ -54,6 +48,31 @@ namespace Cadi.UI.ViewModels
         private void NavigateToRadioPage()
         {
             NavigationService.NavigateAsync("RadioPage");
+        }
+
+        private void ExitCommandExecute()
+        {
+            Xamarin.Forms.MessagingCenter.Send(this, "exit");
+        }
+
+        private bool OnPage;
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            OnPage = true;
+            Task.Run(async () =>
+            {
+                while (OnPage)
+                {
+                    ClockDate = DateTime.Now.ToShortDateString();
+                    ClockTime = DateTime.Now.ToShortTimeString();
+                    await Task.Delay(1000);
+                }
+            });
+        }
+
+        public override void OnNavigatedFrom(INavigationParameters parameters)
+        {
+            OnPage = false;
         }
     }
 }
