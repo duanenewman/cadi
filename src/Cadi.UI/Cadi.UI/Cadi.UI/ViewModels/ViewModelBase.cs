@@ -5,11 +5,12 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Cadi.UI.ViewModels
 {
-    public class ViewModelBase : BindableBase, INavigationAware, IDestructible
+	public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {
         protected INavigationService NavigationService { get; private set; }
         protected IEventAggregator EventAggregator { get; }
@@ -25,7 +26,27 @@ namespace Cadi.UI.ViewModels
         public ICommand ExitCommand { get; }
         public ICommand NavigateToHomeCommand { get; }
 
-        public ViewModelBase(INavigationService navigationService, IEventAggregator eventAggregator)
+		public virtual bool ShowHome => true;
+		public virtual bool ShowRadio => true;
+		public virtual bool ShowAirConditioner => true;
+
+		private string _clockTime;
+		public string ClockTime
+		{
+			get => _clockTime;
+			set => SetProperty(ref _clockTime, value);
+		}
+
+		private string _clockDate;
+		public string ClockDate
+		{
+			get => _clockDate;
+			set => SetProperty(ref _clockDate, value);
+		}
+
+		private bool RunClock { get; set; }
+
+		public ViewModelBase(INavigationService navigationService, IEventAggregator eventAggregator)
         {
             NavigationService = navigationService;
             EventAggregator = eventAggregator;
@@ -54,22 +75,40 @@ namespace Cadi.UI.ViewModels
             NavigationService.NavigateAsync("MainPage");
         }
 
-        public virtual void OnNavigatedFrom(INavigationParameters parameters)
+        public void OnNavigatedFrom(INavigationParameters parameters)
         {
+			RunClock = false;
+			OnNavigatedFromBase(parameters);
+		}
 
-        }
+		protected virtual void OnNavigatedFromBase(INavigationParameters parameters) { }
 
-        public virtual void OnNavigatedTo(INavigationParameters parameters)
+		public virtual void OnNavigatedTo(INavigationParameters parameters)
         {
+			var task = new Task(async () =>
+			{
+				RunClock = true;
+				while (RunClock)
+				{
+					ClockDate = DateTime.Now.ToShortDateString();
+					ClockTime = DateTime.Now.ToShortTimeString();
+					await Task.Delay(1000);
+				}
+			});
+			task.Start();
+			OnNavigatedToBase(parameters);
+		}
 
-        }
+		protected virtual void OnNavigatedToBase(INavigationParameters parameters) { }
 
-        public virtual void OnNavigatingTo(INavigationParameters parameters)
+		public void OnNavigatingTo(INavigationParameters parameters)
         {
+			OnNavigatingToBase(parameters);
+		}
 
-        }
+		protected virtual void OnNavigatingToBase(INavigationParameters parameters) { }
 
-        public virtual void Destroy()
+		public virtual void Destroy()
         {
 
         }

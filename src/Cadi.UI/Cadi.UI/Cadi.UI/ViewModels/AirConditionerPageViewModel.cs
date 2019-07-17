@@ -11,7 +11,9 @@ namespace Cadi.UI.ViewModels
 {
     public class AirConditionerPageViewModel : ViewModelBase
     {
-        public ICommand ToggleACCommand { get; }
+		public override bool ShowAirConditioner => false;
+
+		public ICommand ToggleACCommand { get; }
         public ICarSubSystem CarSubSystem { get; }
 
         private string _acState;
@@ -42,12 +44,12 @@ namespace Cadi.UI.ViewModels
             CarSubSystem.IsAcOn = nextState;
         }
 
-        public override void OnNavigatedTo(INavigationParameters parameters)
+        protected override void OnNavigatedToBase(INavigationParameters parameters)
         {
             eventSubKey = EventAggregator.GetEvent<AcStateChangedEvent>().Subscribe(isOn => SetAcState(isOn));
         }
 
-        public override void OnNavigatedFrom(INavigationParameters parameters)
+		protected override void OnNavigatedFromBase(INavigationParameters parameters)
         {
             EventAggregator.GetEvent<AcStateChangedEvent>().Unsubscribe(eventSubKey);
         }

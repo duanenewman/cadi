@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Cadi.UI.Views.TitleBar">
+  <ContentView.Content>
+        <Grid HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="1"
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Start" 
+               Text="C.A.D.I." />
+
+            <Label Grid.Row="0" Grid.Column="0"
+               HorizontalTextAlignment="Start" VerticalTextAlignment="Start" 
+               Text="{Binding ClockDate}" />
+
+            <Label Grid.Row="0" Grid.Column="2"
+               HorizontalTextAlignment="End" VerticalTextAlignment="Start" 
+               Text="{Binding ClockTime}" />
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

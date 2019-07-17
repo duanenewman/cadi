@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Cadi.UI.Views"
              x:Class="Cadi.UI.Views.RadioPage"
-             Title="{Binding Title}" BackgroundColor="Black">
+             Title="{Binding Title}" Style="{StaticResource DefaltPageStyle}">
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -10,10 +11,12 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="50" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="50" />
         </Grid.ColumnDefinitions>
+
+        <views:TitleBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
 
         <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Vertical" VerticalOptions="CenterAndExpand">
             <Button Text=" 1 " Padding="15" Command="{Binding PresetCommand}" CommandParameter="1" />
@@ -33,22 +36,9 @@
             <Button Text=" 7 " Padding="15" Command="{Binding PresetCommand}" CommandParameter="7" />
             <Button Text=" 8 " Padding="15" Command="{Binding PresetCommand}" CommandParameter="8" />
         </StackLayout>
-
-        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
-              VerticalOptions="Fill" HorizontalOptions="Fill" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Style="{StaticResource LargeButtonStyle}" 
-                Text="Home" Command="{Binding NavigateToHomeCommand}"/>
-            <Button Grid.Column="2" Style="{StaticResource LargeButtonStyle}" Text="A/C" Command="{Binding AirConditionerCommand}"/>
-            <Button Grid.Column="3" Style="{StaticResource LargeButtonStyle}" Text="Exit" Command="{Binding ExitCommand}"/>
-
-        </Grid>
+        
+        <views:NavButtons Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+              VerticalOptions="Fill" HorizontalOptions="Fill" />
 
     </Grid>
     

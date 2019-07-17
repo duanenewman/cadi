@@ -10,8 +10,9 @@ namespace Cadi.UI.ViewModels
 {
     public class RadioPageViewModel: ViewModelBase
     {
+		public override bool ShowRadio => false;
 
-        private string _station = "88.7";
+		private string _station = "88.7";
         public string Station
         {
             get => _station;
