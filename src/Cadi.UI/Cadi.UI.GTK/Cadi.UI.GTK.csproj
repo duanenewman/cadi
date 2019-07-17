@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DesktopGpioService.cs" />
     <Compile Include="GPIOPinDriver.cs" />
     <Compile Include="GtkInitializer.cs" />
     <Compile Include="PinAlreadyExportedException.cs" />
@@ -88,10 +89,10 @@
       <Version>7.1.0.431</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>3.6.0.220655</Version>
+      <Version>4.1.0.581479</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms.Platform.GTK">
-      <Version>3.6.0.220655</Version>
+      <Version>4.1.0.581479</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

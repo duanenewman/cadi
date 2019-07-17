@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Cadi.UI.GTK
 {
-    public class RaspberryPiGpioService : IGpioService, IDisposable
+	public class RaspberryPiGpioService : IGpioService, IDisposable
     {
         private Dictionary<Pin, GPIOPinDriver> PinDrivers { get; set; } = new Dictionary<Pin, GPIOPinDriver>();
 
