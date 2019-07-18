@@ -8,6 +8,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -18,14 +19,77 @@
 
         <views:TitleBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
 
-        <Label Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
-               Text="{Binding ACState}" FontSize="70" />
-        
-        <StackLayout Grid.Row="1" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-            <Button Text="Toggle A/C" Padding="20" Command="{Binding ToggleACCommand}" />
+        <StackLayout Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"
+                     HorizontalOptions="CenterAndExpand" 
+                     VerticalOptions="CenterAndExpand">
+
+            <!--<Button Text="Toggle A/C" Padding="20" Command="{Binding ToggleACCommand}" />-->
+
+            <Button Text="&#xf0d0;"
+                    Style="{StaticResource SmallFontAwesomeButton}"
+                    Command="{Binding AutomaticCommand}" />
+
+            <Button Text="&#xf2dc;"
+                    Style="{StaticResource SmallFontAwesomeButton}"
+                    Command="{Binding ColdCommand}" />
+
+            <Button Text="&#xf06d;"
+                    Style="{StaticResource SmallFontAwesomeButton}"
+                    Command="{Binding HeatCommand}" />
+
+            <Button Text="&#xf72e;"
+                    Style="{StaticResource SmallFontAwesomeButton}"
+                    Command="{Binding SpeedCommand}" />
+
         </StackLayout>
 
-        <views:NavButtons Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+
+
+        <StackLayout Grid.Row="1" Grid.Column="1"
+                     Orientation="Vertical"
+                     VerticalOptions="CenterAndExpand">
+
+            <Label HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Text="MODE" 
+                   FontSize="{StaticResource ExtraSmallFontSize}" />
+
+            <Label HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Text="{Binding ACState}" 
+                   FontSize="{StaticResource ExtraLargeFontSize}" />
+
+            <Label HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Text="FAN SPEED" 
+                   IsVisible="{Binding IsOn}" 
+                   FontSize="{StaticResource ExtraSmallFontSize}" />
+
+            <Label HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Text="{Binding FanSpeed}" 
+                   IsVisible="{Binding IsOn}" 
+                   FontSize="{StaticResource SmallFontSize}" />
+
+        </StackLayout>
+
+        
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Grid.Row="2" Grid.Column="1" 
+                     Orientation="Horizontal">
+
+        </StackLayout>
+                
+        <StackLayout Grid.Row="1" Grid.Column="2" Grid.RowSpan="2"
+                     HorizontalOptions="CenterAndExpand" 
+                     VerticalOptions="CenterAndExpand">
+            
+            <!--<Button Text="Toggle A/C" Padding="20" Command="{Binding ToggleACCommand}" />-->
+
+        </StackLayout>
+
+        <views:NavButtons Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
               VerticalOptions="Fill" HorizontalOptions="Fill" />
 
     </Grid>

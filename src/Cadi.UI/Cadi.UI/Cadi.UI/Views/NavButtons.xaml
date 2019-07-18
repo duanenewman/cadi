@@ -30,7 +30,7 @@
                     Command="{Binding RadioCommand}"
                     IsEnabled="{Binding ShowRadio}"/>
 
-            <Button Text="&#xf2dc;" 
+            <Button Text="&#xf863;" 
                     Command="{Binding AirConditionerCommand}"
                     IsEnabled="{Binding ShowAirConditioner}"/>
 

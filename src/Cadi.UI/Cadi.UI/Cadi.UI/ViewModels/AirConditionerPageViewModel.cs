@@ -18,23 +18,76 @@ namespace Cadi.UI.ViewModels
 
 		private SubscriptionToken eventSubKey;
 
-		private string _acState;
+		private bool isOn;
+		public bool IsOn
+		{
+			get { return isOn; }
+			set { SetProperty(ref isOn, value, () => RaisePropertyChanged(nameof(ACState))); }
+		}
+
+		private string _acState = "Auto";
         public string ACState
         {
-            get { return _acState; }
-            set { SetProperty(ref _acState, value); }
+            get { return IsOn ? _acState : "Off"; }
+            private set { SetProperty(ref _acState, value); }
         }
 
-        public AirConditionerPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator , ICarSubSystem carSubSystem) : base(navigationService, eventAggregator)
+		private string fanSpeed = "Low";
+
+		public string FanSpeed
+		{
+			get { return fanSpeed; }
+            private set { SetProperty(ref fanSpeed, value); }
+		}
+
+		public DelegateCommand AutomaticCommand =>
+			new DelegateCommand(() => { ACState = "Auto"; IsOn = true; });
+
+		public DelegateCommand ColdCommand =>
+			new DelegateCommand(() => { ACState = "Cool"; IsOn = true; });
+
+		public DelegateCommand HeatCommand =>
+			new DelegateCommand(() => { ACState = "Heat"; IsOn = true; });
+
+		public DelegateCommand SpeedCommand =>
+			new DelegateCommand(() => UpdateFanSpeed());
+
+		private void UpdateFanSpeed()
+		{
+			if (!IsOn)
+			{
+				IsOn = true;
+				return;
+			}
+
+			switch (FanSpeed)
+			{
+				case "Low":
+					FanSpeed = "Medium";
+					IsOn = true;
+					break;
+				case "Medium":
+					FanSpeed = "High";
+					IsOn = true;
+					break;
+				case "High":
+					IsOn = false;
+					FanSpeed = "Low";
+					break;
+			}
+		}
+
+		public AirConditionerPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator , ICarSubSystem carSubSystem) : base(navigationService, eventAggregator)
         {
             ToggleACCommand = new DelegateCommand(ToggleACCommandExecute);
             CarSubSystem = carSubSystem;
-            SetAcState(CarSubSystem.IsAcOn);
+            IsOn = CarSubSystem.IsAcOn;
         }
 
         private void SetAcState(bool isOn)
         {
-            ACState = isOn ? "On" : "Off";
+			IsOn = isOn;
+			//ACState = isOn ? "On" : "Off";
         }
 
         private void ToggleACCommandExecute()

@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <Color x:Key="PageBackgroundColor">DarkBlue</Color>
 
+            <x:Double x:Key="ExtraLargeFontSize">40</x:Double>
             <x:Double x:Key="LargeFontSize">30</x:Double>
             <x:Double x:Key="MediumFontSize">20</x:Double>
             <x:Double x:Key="SmallFontSize">15</x:Double>
