@@ -36,6 +36,7 @@ namespace Cadi.UI
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<RadioPage, RadioPageViewModel>();
+            containerRegistry.RegisterForNavigation<BluetoothPage, BluetoothPageViewModel>();
             containerRegistry.RegisterForNavigation<AirConditionerPage, AirConditionerPageViewModel>();
         }
     }

@@ -7,24 +7,36 @@
              x:Class="Cadi.UI.Views.NavButtons">
     <ContentView.Resources>
         <ResourceDictionary>
-            <Style TargetType="Button" BasedOn="{StaticResource LargeButtonStyle}">
-                <Setter Property="WidthRequest" Value="100" />
-            </Style>
+            <Style TargetType="Button" BasedOn="{StaticResource LargeFontAwesomeButton}"/>
         </ResourceDictionary>
+        
     </ContentView.Resources>
     <ContentView.Content>
         <StackLayout Orientation="Horizontal" 
                      VerticalOptions="Fill" 
                      HorizontalOptions="CenterAndExpand" >
-            <!--<Image Source="home.png" WidthRequest="100" HeightRequest="100">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToHomeCommand}" />
-                </Image.GestureRecognizers>
-            </Image>-->
-            <Button Text="Home" IsVisible="{Binding ShowHome}" Command="{Binding NavigateToHomeCommand}" />
-            <Button Text="Radio" IsVisible="{Binding ShowRadio}" Command="{Binding RadioCommand}" />
-            <Button Text="A/C" IsVisible="{Binding ShowAirConditioner}" Command="{Binding AirConditionerCommand}"/>
-            <Button Text="Exit" Command="{Binding ExitCommand}"/>
+
+            <Button Text="&#xf015;" 
+                    Command="{Binding NavigateToHomeCommand}"
+                    IsEnabled="{Binding ShowHome}"/>
+
+            <Button Text="&#xf293;" 
+                    FontFamily="{StaticResource FAFontFamilyBrand}"
+                    FontAttributes="None" 
+                    Command="{Binding BluetoothCommand}"
+                    IsEnabled="{Binding ShowBluetooth}"/>
+
+            <Button Text="&#xf519;" 
+                    Command="{Binding RadioCommand}"
+                    IsEnabled="{Binding ShowRadio}"/>
+
+            <Button Text="&#xf2dc;" 
+                    Command="{Binding AirConditionerCommand}"
+                    IsEnabled="{Binding ShowAirConditioner}"/>
+
+            <Button Text="&#xf011;" 
+                    Command="{Binding ExitCommand}"/>
+
         </StackLayout>
     </ContentView.Content>
 </ContentView>

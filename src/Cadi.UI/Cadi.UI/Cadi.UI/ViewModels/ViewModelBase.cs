@@ -25,9 +25,11 @@ namespace Cadi.UI.ViewModels
         public ICommand AirConditionerCommand { get; }
         public ICommand ExitCommand { get; }
         public ICommand NavigateToHomeCommand { get; }
-
+		public DelegateCommand BluetoothCommand =>
+			new DelegateCommand(() => NavigationService.NavigateAsync("BluetoothPage"));
 		public virtual bool ShowHome => true;
 		public virtual bool ShowRadio => true;
+		public virtual bool ShowBluetooth => true;
 		public virtual bool ShowAirConditioner => true;
 
 		private string _clockTime;
@@ -91,7 +93,7 @@ namespace Cadi.UI.ViewModels
 				while (RunClock)
 				{
 					ClockDate = DateTime.Now.ToShortDateString();
-					ClockTime = DateTime.Now.ToShortTimeString();
+					ClockTime = DateTime.Now.ToLongTimeString();
 					await Task.Delay(1000);
 				}
 			});

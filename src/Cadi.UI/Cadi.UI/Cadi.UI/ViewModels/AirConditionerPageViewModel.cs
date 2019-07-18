@@ -16,9 +16,9 @@ namespace Cadi.UI.ViewModels
 		public ICommand ToggleACCommand { get; }
         public ICarSubSystem CarSubSystem { get; }
 
-        private string _acState;
-        private SubscriptionToken eventSubKey;
+		private SubscriptionToken eventSubKey;
 
+		private string _acState;
         public string ACState
         {
             get { return _acState; }

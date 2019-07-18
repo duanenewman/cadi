@@ -9,6 +9,20 @@
         <ResourceDictionary>
             <Color x:Key="PageBackgroundColor">DarkBlue</Color>
 
+            <x:Double x:Key="LargeFontSize">30</x:Double>
+            <x:Double x:Key="MediumFontSize">20</x:Double>
+            <x:Double x:Key="SmallFontSize">15</x:Double>
+            <x:Double x:Key="ExtraSmallFontSize">10</x:Double>
+
+            <x:Double x:Key="FAFontSize">30</x:Double>
+            <x:Double x:Key="FASmallFontSize">15</x:Double>
+            <x:String x:Key="FAFontFamily">Font Awesome 5 Free Solid</x:String>
+            <FontAttributes x:Key="FASolidFontAttributes">Bold</FontAttributes>
+
+            <x:String x:Key="FAFontFamilyBrand">Font Awesome 5 Brands Regular</x:String>
+            <x:String x:Key="FAFontFamilyRegular">Font Awesome 5 Free Regular</x:String>
+
+            
             <Style TargetType="ContentPage" x:Key="DefaltPageStyle">
                 <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
             </Style>
@@ -17,8 +31,32 @@
                 <Setter Property="MinimumWidthRequest" Value="100" />
                 <Setter Property="MinimumHeightRequest" Value="100" />
             </Style>
+
+            <Style x:Key="LargeFontAwesomeButton" TargetType="Button" BasedOn="{StaticResource LargeButtonStyle}">
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="FontSize" Value="{StaticResource FAFontSize}" />
+                <Setter Property="FontFamily" Value="{StaticResource FAFontFamily}" />
+                <Setter Property="FontAttributes" Value="{StaticResource FASolidFontAttributes}" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="BorderWidth" Value="0"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            
+            <Style x:Key="SmallFontAwesomeButton" TargetType="Button" BasedOn="{StaticResource LargeFontAwesomeButton}">
+                <Setter Property="WidthRequest" Value="50" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="FontSize" Value="{StaticResource FASmallFontSize}" />
+            </Style>
+
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="White" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="FALabel">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="{StaticResource FAFontSize}" />
+                <Setter Property="FontFamily" Value="{StaticResource FAFontFamily}" />
+                <Setter Property="FontAttributes" Value="{StaticResource FASolidFontAttributes}" />
             </Style>
         </ResourceDictionary>
 

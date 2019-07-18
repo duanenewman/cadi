@@ -9,5 +9,6 @@ namespace Cadi.UI
         void Stop();
 
         bool IsAcOn { get; set; }
-    }
+		bool IsLeftTurnSignalOn { get; }
+	}
 }

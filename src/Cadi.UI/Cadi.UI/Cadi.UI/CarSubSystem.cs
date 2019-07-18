@@ -7,6 +7,7 @@ namespace Cadi.UI
 {
 
     public class AcStateChangedEvent : PubSubEvent<bool> { }
+    public class LeftTurnSignalChangedEvent : PubSubEvent<bool> { }
 
     public class CarSubSystem : ICarSubSystem
     {
@@ -18,8 +19,12 @@ namespace Cadi.UI
                 EventAggregator.GetEvent<AcStateChangedEvent>().Publish(nextState == GPIOState.High);
             }
         }
+		public bool IsLeftTurnSignalOn
+		{
+			get => GpioService.GetPinState(Pin.GPIO18) == GPIOState.High;
+		}
 
-        public IGpioService GpioService { get; }
+		public IGpioService GpioService { get; }
         public IEventAggregator EventAggregator { get; }
         private bool IsRunning { get; set; }
         private bool WasPin17Closed { get; set; }
@@ -54,6 +59,7 @@ namespace Cadi.UI
                                 nextState);
 
                             EventAggregator.GetEvent<AcStateChangedEvent>().Publish(nextState == GPIOState.High);
+                            EventAggregator.GetEvent<LeftTurnSignalChangedEvent>().Publish(nextState == GPIOState.High);
                         }
 
                         WasPin17Closed = isPin17Closed;

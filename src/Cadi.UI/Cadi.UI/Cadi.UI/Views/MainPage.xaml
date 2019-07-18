@@ -2,10 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Cadi.UI.Views"
+             xmlns:converters="clr-namespace:Cadi.UI.Converters"
              x:Class="Cadi.UI.Views.MainPage"
              Title="{Binding Title}" Style="{StaticResource DefaltPageStyle}">
     <ContentPage.Resources>
+        <converters:BoolToValueConverter x:Key="activeIconColorConverter">
+            <converters:BoolToValueConverter.TrueValue>
+                <Color>Green</Color>
+            </converters:BoolToValueConverter.TrueValue>
+            <converters:BoolToValueConverter.FalseValue>
+                <Color>White</Color>
+            </converters:BoolToValueConverter.FalseValue>
+        </converters:BoolToValueConverter>
     </ContentPage.Resources>
+    
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -20,10 +30,30 @@
 
         <views:TitleBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
 
+        <StackLayout Grid.Row="1" Grid.Column="0" 
+                     Orientation="Vertical" VerticalOptions="CenterAndExpand">
+            
+            <Label Style="{StaticResource FALabel}"
+                   Text="&#xf053;"
+                   TextColor="{Binding LeftTurnActive, Converter={StaticResource activeIconColorConverter}}"
+                   />
+            
+        </StackLayout> 
+        
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
                      Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
             <Label Text="70" FontSize="70" />
             <Label Text="MPH" FontSize="Small" VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" Grid.Column="2" 
+                     Orientation="Vertical" VerticalOptions="CenterAndExpand">
+
+            <Label Style="{StaticResource FALabel}"
+                   Text="&#xf054;"
+                   TextColor="{Binding RightTurnActive, Converter={StaticResource activeIconColorConverter}}"
+                   />
+
         </StackLayout>
 
         <views:NavButtons Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
