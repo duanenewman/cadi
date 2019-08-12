@@ -27,10 +27,13 @@ namespace Cadi.UI.ViewModels
         public ICommand NavigateToHomeCommand { get; }
 		public DelegateCommand BluetoothCommand =>
 			new DelegateCommand(() => NavigationService.NavigateAsync("BluetoothPage"));
+		public DelegateCommand RearviewCommand => new DelegateCommand(() => NavigationService.NavigateAsync("RearviewPage"));
+
 		public virtual bool ShowHome => true;
 		public virtual bool ShowRadio => true;
 		public virtual bool ShowBluetooth => true;
 		public virtual bool ShowAirConditioner => true;
+		public virtual bool ShowRearview => true;
 
 		private string _clockTime;
 		public string ClockTime

@@ -1,6 +1,7 @@
 ﻿using Prism;
 using Prism.Ioc;
 using System;
+using System.Runtime.InteropServices;
 
 namespace Cadi.UI.GTK
 {
@@ -9,7 +10,11 @@ namespace Cadi.UI.GTK
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
 			// Register any platform specific implementations
-			if (Environment.OSVersion.Platform == PlatformID.Unix)
+			if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+			{
+				containerRegistry.RegisterSingleton<IGpioService, DesktopGpioService>();
+			}
+			else if (Environment.OSVersion.Platform == PlatformID.Unix)
 			{
 				containerRegistry.RegisterSingleton<IGpioService, RaspberryPiGpioService>();
 			}

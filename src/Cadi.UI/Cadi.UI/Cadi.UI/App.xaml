@@ -2,6 +2,7 @@
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+             xmlns:local="clr-namespace:Cadi.UI"
              x:Class="Cadi.UI.App">
 	<Application.Resources>
 
@@ -17,13 +18,28 @@
 
             <x:Double x:Key="FAFontSize">30</x:Double>
             <x:Double x:Key="FASmallFontSize">15</x:Double>
-            <x:String x:Key="FAFontFamily">Font Awesome 5 Free Solid</x:String>
+            <local:OnOsPlatform
+                x:Key="FAFontFamily"
+                x:TypeArguments="x:String">
+                <On Platform="linux,windows">Font Awesome 5 Free Solid</On>
+                <On Platform="osx">Font Awesome 5 Free</On>
+            </local:OnOsPlatform>
             <FontAttributes x:Key="FASolidFontAttributes">Bold</FontAttributes>
 
-            <x:String x:Key="FAFontFamilyBrand">Font Awesome 5 Brands Regular</x:String>
-            <x:String x:Key="FAFontFamilyRegular">Font Awesome 5 Free Regular</x:String>
+            <local:OnOsPlatform
+                x:Key="FAFontFamilyBrand"
+                x:TypeArguments="x:String">
+                <On Platform="linux,windows">Font Awesome 5 Brands Regular</On>
+                <On Platform="osx">Font Awesome 5 Brands</On>
+            </local:OnOsPlatform>
 
-            
+            <local:OnOsPlatform
+                x:Key="FAFontFamilyRegular"
+                x:TypeArguments="x:String">
+                <On Platform="linux,windows">Font Awesome 5 Free Regular</On>
+                <On Platform="osx">Font Awesome 5 Free</On>
+            </local:OnOsPlatform>
+
             <Style TargetType="ContentPage" x:Key="DefaltPageStyle">
                 <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
             </Style>

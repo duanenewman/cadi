@@ -34,6 +34,10 @@
                     Command="{Binding AirConditionerCommand}"
                     IsEnabled="{Binding ShowAirConditioner}"/>
 
+            <Button Text="&#xf03d;"
+                    Command="{Binding RearviewCommand}"
+                    IsEnabled="{Binding ShowRearview}"/>
+
             <Button Text="&#xf011;" 
                     Command="{Binding ExitCommand}"/>
 
