@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3DEDD729-D03A-4994-9FFB-C7F150DB6FB2}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{1779c581-838b-4291-88c6-937e9c9d1884}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cadi.UI.GTK</RootNamespace>
-    <AssemblyName>Cadi.UI.GTK</AssemblyName>
+    <RootNamespace>Cadi.UI.GTK.Mac</RootNamespace>
+    <AssemblyName>Cadi.UI.GTK.Mac</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -70,19 +70,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DesktopGpioService.cs" />
-    <Compile Include="GPIOPinDriver.cs" />
-    <Compile Include="GtkInitializer.cs" />
-    <Compile Include="PinAlreadyExportedException.cs" />
-    <Compile Include="GtkApp.cs" />
+    <Compile Include="MacGtkInitializer.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RaspberryPiGpioService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Cadi.UI\Cadi.UI\Cadi.UI.csproj">
-      <Project>{79d1285b-a62b-4b3c-b9f1-ece8ab74c6a6}</Project>
-      <Name>Cadi.UI</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Prism.DryIoc.Forms">
@@ -97,6 +87,7 @@
     <PackageReference Include="LibVLCSharp.Forms.GTK">
       <Version>3.1.1</Version>
     </PackageReference>
+    <PackageReference Include="VideoLAN.LibVLC.Mac" Version="3.1.3" GeneratePathProperty="true" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Core" ExcludeAssets="Compile" GeneratePathProperty="true">
@@ -106,6 +97,23 @@
       <HintPath>$(PkgPrism_Core)\lib\netstandard2.0\Prism.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cadi.UI.GTK\Cadi.UI.GTK.csproj">
+      <Project>{3DEDD729-D03A-4994-9FFB-C7F150DB6FB2}</Project>
+      <Name>Cadi.UI.GTK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cadi.UI\Cadi.UI\Cadi.UI.csproj">
+      <Project>{79D1285B-A62B-4B3C-B9F1-ECE8AB74C6A6}</Project>
+      <Name>Cadi.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="$(PkgVideoLAN_LibVLC_Mac)\build\osx-x64\libvlc.dylib">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 
   <Target Name="ChangeAliasesOfNugetRefs" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
